@@ -16,7 +16,9 @@ class QiuBai2(scrapy.Spider):
             # has_debug = True
         for ele in response.xpath('//div[@class="article block untagged mb15"]'):
             authors = ele.xpath('./div[@class="author clearfix"]/a[2]/h2/text()').extract()
-            contents = ele.xpath('./div[@class="content"]/text()').extract()
+            contents = ele.xpath('.//div[@class="content"]/span/text()').extract()
             yield Qiubai2Item(author=authors, content=contents)
+            
+            
 
         
